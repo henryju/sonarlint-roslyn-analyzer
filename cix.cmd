@@ -9,9 +9,10 @@ MSBuild.SonarQube.Runner begin /k:sonaranalyzer-csharp-vbnet /n:"SonarAnalyzer f
   /d:sonar.github.pullRequest=%PULL_REQUEST% ^
   /d:sonar.github.repository=%GITHUB_REPO% ^
   /d:sonar.github.oauth=%GITHUB_TOKEN% ^
-  /d:sonar.analysis.mode=issues
+  /d:sonar.analysis.mode=issues ^
+  /d:sonar.verbose=true
 
 %NUGET_PATH% restore SonarLint.sln
 %MSBUILD_PATH% SonarLint.sln /t:rebuild /p:Configuration=Release
 
-MSBuild.SonarQube.Runner.exe end /d:sonar.login=%SONAR_TOKEN%
+MSBuild.SonarQube.Runner end /d:sonar.login=%SONAR_TOKEN%
